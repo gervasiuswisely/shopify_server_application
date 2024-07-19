@@ -1,14 +1,13 @@
-require('dotenv').config();
 const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
 const multer = require('multer');
 const FormData = require('form-data');
 const app = express();
-const port = process.env.PORT || 3000;
 
+// Middleware
 app.use(cors());
-app.use(multer().none()); // Menangani data `multipart/form-data`
+app.use(multer().none()); // Menangani data multipart/form-data
 
 // Mengatur kredensial Basic Authentication
 const login = process.env.login;
@@ -49,8 +48,4 @@ app.post('/api/data', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Proxy server running at http://localhost:${port}`);
-  
-});
-
+module.exports = app;
