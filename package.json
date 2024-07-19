@@ -5,7 +5,8 @@
     "express": "^4.19.2",
     "form-data": "^4.0.0",
     "multer": "^1.4.5-lts.1",
-    "node-fetch": "^2.7.0"
+    "node-fetch": "^2.7.0",
+    "vercel": "^35.1.0"
   },
   "name": "shopify_server_application",
   "version": "1.0.0",
