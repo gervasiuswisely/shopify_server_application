@@ -65,7 +65,7 @@ app.post('/api/data', async (req, res) => {
 
 try {
 
-  const response = await fetch(process.env.url, {
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
