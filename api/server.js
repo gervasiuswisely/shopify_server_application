@@ -62,6 +62,7 @@ app.post('/api/data', async (req, res) => {
     secret: process.env.secret, // Secret key dari reCAPTCHA
     response: req.body.key1,   // Token yang didapat dari klien (frontend)
 });
+res.json(body)
 // try {
 
 //   const response = await fetch(process.env.url, {
