@@ -58,17 +58,17 @@ app.use(multer().none()); // Menangani data multipart/form-data
 app.post('/api/data', async (req, res) => {
   console.log('Request Body:', req.body.key1,process.env.secret);
   console.log(process.env.url)
-  const body = ({
+  const body =  new URLSearchParams ({
     secret: process.env.secret, // Secret key dari reCAPTCHA
     response: req.body.key1,   // Token yang didapat dari klien (frontend)
 });
 
 try {
 
-  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+  const response = await fetch(process.env.url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body:body,
   });
