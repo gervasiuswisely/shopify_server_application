@@ -58,7 +58,7 @@ app.use(multer().none()); // Menangani data multipart/form-data
 app.post('/api/data', async (req, res) => {
   console.log('Request Body:', req.body.key1,process.env.secret);
   console.log(process.env.url)
-  const body = new URLSearchParams({
+  const body = ({
     secret: process.env.secret, // Secret key dari reCAPTCHA
     response: req.body.key1,   // Token yang didapat dari klien (frontend)
 });
