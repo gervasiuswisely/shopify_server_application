@@ -4,8 +4,15 @@ const cors = require('cors');
 const multer = require('multer');
 const FormData = require('form-data');
 const app = express();
+require('dotenv').config();
 
+if (!process.env.url) {
+  console.error("Variabel 'url' tidak ditemukan dalam .env");
+} else {
+  console.log(process.env.url); // Harus menampilkan nilai URL
+}
 // Middleware
+app.use(express.json());
 app.use(cors());
 app.use(multer().none()); // Menangani data multipart/form-data
 
@@ -49,7 +56,12 @@ app.use(multer().none()); // Menangani data multipart/form-data
 // });
 
 app.post('/api/data', async (req, res) => {
-  console.log('Request Body:', req.body);
+  console.log('Request Body:', req.body.key1,process.env.secret);
+  console.log(process.env.url)
+  const body = new URLSearchParams({
+    secret: process.env.secret, // Secret key dari reCAPTCHA
+    response: req.body.key1,   // Token yang didapat dari klien (frontend)
+});
 try {
   // Membuat instance FormData
   // const form = new FormData();
@@ -63,9 +75,9 @@ try {
   const response = await fetch(process.env.url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
-    body: JSON.stringify(req.body,process.env.secret),
+    body:body,
   });
 
   // Mendapatkan data dari API eksternal
