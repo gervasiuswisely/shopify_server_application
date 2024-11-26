@@ -76,7 +76,7 @@ try {
   // Mendapatkan data dari API eksternal
   const data = await response.json();
   // Mengirimkan data kembali ke klien
-  res.json(body);
+  res.json(data);
 } catch (error) {
   // Menangani kesalahan dan mengirimkan respons error
   console.error(error);
