@@ -13,7 +13,7 @@ if (!process.env.url) {
 }
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use(multer().none()); // Menangani data multipart/form-data
 
 // Mengatur kredensial Basic Authentication
