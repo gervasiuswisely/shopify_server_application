@@ -62,34 +62,25 @@ app.post('/api/data', async (req, res) => {
     secret: process.env.secret, // Secret key dari reCAPTCHA
     response: req.body.key1,   // Token yang didapat dari klien (frontend)
 });
-try {
-  // Membuat instance FormData
-  // const form = new FormData();
+// try {
 
-  // Menambahkan data dari body request ke FormData
-  // Object.keys(req.body).forEach(key => {
-  //   form.append(key, req.body[key]);
-  // });
+//   const response = await fetch(process.env.url, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/x-www-form-urlencoded',
+//     },
+//     body:body,
+//   });
 
-  // Mengirim permintaan POST ke API eksternal dengan FormData dan Basic Authentication
-  const response = await fetch(process.env.url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body:body,
-  });
-
-  // Mendapatkan data dari API eksternal
-  const data = await response.json();
-
-  // Mengirimkan data kembali ke klien
-  res.json(data);
-} catch (error) {
-  // Menangani kesalahan dan mengirimkan respons error
-  console.error(error);
-  res.status(500).json({ error: 'Failed to fetch data' });
-}
+//   // Mendapatkan data dari API eksternal
+//   const data = await response.json();
+//   // Mengirimkan data kembali ke klien
+//   res.json(data);
+// } catch (error) {
+//   // Menangani kesalahan dan mengirimkan respons error
+//   console.error(error);
+//   res.status(500).json({ error: 'Failed to fetch data' });
+// }
 });
 
 module.exports = app;
