@@ -49,8 +49,7 @@ app.use(multer().none()); // Menangani data multipart/form-data
 // });
 
 app.post('/api/data', async (req, res) => {
-  console.log('tikus')
-  // console.log('Request Body:', req.body);
+  console.log('Request Body:', req.body);
 try {
   // Membuat instance FormData
   // const form = new FormData();
@@ -66,7 +65,7 @@ try {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(response,req.body),
+    body: JSON.stringify(req.body,process.env.secret),
   });
 
   // Mendapatkan data dari API eksternal
